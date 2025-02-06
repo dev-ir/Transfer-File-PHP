@@ -1,4 +1,4 @@
-# File Upload from URL Script - README
+# File Upload from URL Script
 
 ## Description
 This script is written in PHP and allows downloading a file from a specified URL and saving it on the server. To successfully execute this script, the user must enter a valid password.
